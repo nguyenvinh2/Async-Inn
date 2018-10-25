@@ -1,48 +1,51 @@
 ﻿@model AsyncInn.Models.HotelRoom
 
 @{
-    ViewData["Title"] = "Details";
+  ViewData["Title"] = "Details";
 }
+<head>
+  <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
 
 <h2>Details</h2>
 
 <div>
-    <h4>HotelRoom</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.RoomNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RoomNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Rate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Rate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PetFriendly)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PetFriendly)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Room)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Room.ID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Hotel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Hotel.ID)
-        </dd>
-    </dl>
+  <h4>HotelRoom</h4>
+  <hr />
+  <dl class="dl-horizontal">
+    <dt>
+      @Html.DisplayNameFor(model => model.RoomNumber)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model => model.RoomNumber)
+    </dd>
+    <dt>
+      @Html.DisplayNameFor(model => model.Rate)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model => model.Rate)
+    </dd>
+    <dt>
+      @Html.DisplayNameFor(model => model.PetFriendly)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model => model.PetFriendly)
+    </dd>
+    <dt>
+      @Html.DisplayNameFor(model => model.Room)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model => model.Room.ID)
+    </dd>
+    <dt>
+      @Html.DisplayNameFor(model => model.Hotel)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model => model.Hotel.ID)
+    </dd>
+  </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+  @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+  <a asp-action="Index">Back to List</a>
 </div>
