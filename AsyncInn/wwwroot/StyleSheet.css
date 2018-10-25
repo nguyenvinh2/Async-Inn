@@ -1,0 +1,21 @@
+﻿body {
+  text-align: center;
+  background-color: lightgreen
+}
+
+table {
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+tr {
+  border: 1px solid black;
+}
+table th td {
+  padding: 5px;
+  text-align: left;
+}
+
+th {
+  padding-right: 15px;
+}
