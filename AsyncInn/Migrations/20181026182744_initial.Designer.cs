@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    [Migration("20181025180840_initial")]
+    [Migration("20181026182744_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,14 @@ namespace AsyncInn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Amenities");
+
+                    b.HasData(
+                        new { ID = 1, Name = "Jacuzzi" },
+                        new { ID = 2, Name = "Ocean View" },
+                        new { ID = 3, Name = "Mini Bar" },
+                        new { ID = 4, Name = "Satellite Television" },
+                        new { ID = 5, Name = "Skylight" }
+                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.Hotel", b =>
@@ -48,6 +56,14 @@ namespace AsyncInn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Hotels");
+
+                    b.HasData(
+                        new { ID = 1, Address = "123 Fake Street", Name = "Hilten", Phone = "205-434-5684" },
+                        new { ID = 2, Address = "538 Numpy Street", Name = "Sheratone", Phone = "352-569-3862" },
+                        new { ID = 3, Address = "321 Scipy Street", Name = "Westen", Phone = "235-234-6621" },
+                        new { ID = 4, Address = "959 C-Flat Street", Name = "Hiatte", Phone = "385-375-2385" },
+                        new { ID = 5, Address = "235 Java Street", Name = "Four Quarters", Phone = "238-498-3235" }
+                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.HotelRoom", b =>
@@ -75,8 +91,6 @@ namespace AsyncInn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Age");
-
                     b.Property<int>("Layout");
 
                     b.Property<string>("Name");
@@ -84,6 +98,15 @@ namespace AsyncInn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new { ID = 1, Layout = 1, Name = "Kite" },
+                        new { ID = 2, Layout = 0, Name = "Punny" },
+                        new { ID = 3, Layout = 2, Name = "Miner" },
+                        new { ID = 4, Layout = 1, Name = "Bursers" },
+                        new { ID = 5, Layout = 0, Name = "Coraline" },
+                        new { ID = 6, Layout = 2, Name = "Pop" }
+                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.RoomAmenity", b =>
