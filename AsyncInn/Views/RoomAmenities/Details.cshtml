@@ -1,29 +1,35 @@
 ﻿@model AsyncInn.Models.RoomAmenity
 
 @{
-    ViewData["Title"] = "Details";
+  ViewData["Title"] = "Details";
 }
+
+<head>
+  <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+
+
 
 <h2>Details</h2>
 
 <div>
-    <h4>RoomAmenity</h4>
-    <hr />
-    <dl class="dl-horizontal">
-      <dt>
-        @Html.DisplayNameFor(model => model.Room)
-      </dt>
-      <dd>
-        @Html.DisplayFor(model => model.Room.Name)
-      </dd>
-      <dt>
-        @Html.DisplayNameFor(model => model.Amenity)
-      </dt>
-      <dd>
-        @Html.DisplayFor(model => model.Amenity.Name)
-      </dd>
-    </dl>
+  <h4>RoomAmenity</h4>
+  <hr />
+  <dl class="dl-horizontal">
+    <dt>
+      @Html.DisplayNameFor(model => model.Room)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model => model.Room.Name)
+    </dd>
+    <dt>
+      @Html.DisplayNameFor(model => model.Amenity)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model => model.Amenity.Name)
+    </dd>
+  </dl>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+  <a asp-action="Index">Back to List</a>
 </div>

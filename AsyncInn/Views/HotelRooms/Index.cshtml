@@ -7,7 +7,15 @@
   <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 
-<h2>Index</h2>
+<ul>
+  <li><a>Hotel Rooms</a></li>
+  <li style="float:right"><a href="Amenities">Anemities</a></li>
+  <li style="float:right"><a href="RoomAmenities">Room Anemities</a></li>
+  <li style="float:right"><a href="Rooms">Rooms</a></li>
+  <li style="float:right"><a href="HotelRooms">Hotel Rooms</a></li>
+  <li style="float:right"><a href="Hotels">Hotels</a></li>
+  <li style="float:right"><a href="Home">Main</a></li>
+</ul>
 
 <p>
   <a asp-action="Create">Create New</a>
@@ -36,28 +44,28 @@
   <tbody>
     @foreach (var item in Model)
     {
-    <tr>
-      <td>
-        @Html.DisplayFor(modelItem => item.Hotel.Name)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.Room.Name)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.RoomNumber)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.Rate)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.PetFriendly)
-      </td>
-      <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.HotelID, id2 = item.RoomID }) |
-        @Html.ActionLink("Details", "Details", new { id=item.HotelID, id2=item.RoomID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.HotelID, id2 = item.RoomID })
-      </td>
-    </tr>
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Hotel.Name)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Room.Name)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.RoomNumber)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.PetFriendly)
+        </td>
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { id = item.HotelID, id2 = item.RoomID }) |
+          @Html.ActionLink("Details", "Details", new { id = item.HotelID, id2 = item.RoomID }) |
+          @Html.ActionLink("Delete", "Delete", new { id = item.HotelID, id2 = item.RoomID })
+        </td>
+      </tr>
     }
   </tbody>
 </table>

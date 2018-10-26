@@ -1,6 +1,4 @@
 ﻿body {
-  text-align: center;
-  background-color: lightgreen
 }
 
 table {
@@ -19,3 +17,29 @@ table th td {
 th {
   padding-right: 15px;
 }
+
+ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: darkblue;
+}
+
+li {
+  list-style: none;
+  float: left;
+}
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 15px;
+  }
+
+    li a:hover:not(.active) {
+      background-color: black;
+    }
