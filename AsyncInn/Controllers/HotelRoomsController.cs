@@ -49,8 +49,8 @@ namespace AsyncInn.Controllers
         // GET: HotelRooms/Create
         public IActionResult Create()
         {
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "ID");
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID");
+            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name");
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name");
             return View();
         }
 
