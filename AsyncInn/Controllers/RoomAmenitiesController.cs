@@ -67,8 +67,8 @@ namespace AsyncInn.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AmenityID"] = new SelectList(_context.Amenities, "ID", "ID", roomAmenity.AmenityID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID", roomAmenity.RoomID);
+            ViewData["AmenityID"] = new SelectList(_context.Amenities, "ID", "ID", roomAmenity.Amenity);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID", roomAmenity.Room);
             return View(roomAmenity);
         }
 
