@@ -10,6 +10,8 @@ namespace AsyncInn.Models
   {
     [Key]
     public int ID { get; set; }
+    [Required]
+    [Display(Name = "Amenity")]
     public string Name { get; set; }
 
     public ICollection<RoomAmenity> RoomAmenities { get; set; }
