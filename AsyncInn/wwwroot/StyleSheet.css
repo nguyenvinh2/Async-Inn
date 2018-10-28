@@ -1,6 +1,4 @@
 ﻿body {
-  text-align: center;
-  background-color: lightgreen
 }
 
 table {
@@ -12,10 +10,36 @@ tr {
   border: 1px solid black;
 }
 table th td {
-  padding: 5px;
+  padding: 25px;
   text-align: left;
 }
 
 th {
-  padding-right: 15px;
+  padding-right: 25px;
 }
+
+ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: darkblue;
+}
+
+li {
+  list-style: none;
+  float: left;
+}
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 15px;
+  }
+
+    li a:hover:not(.active) {
+      background-color: black;
+    }

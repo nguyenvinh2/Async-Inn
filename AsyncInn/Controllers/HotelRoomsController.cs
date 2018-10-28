@@ -27,9 +27,9 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRooms/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
@@ -37,7 +37,7 @@ namespace AsyncInn.Controllers
             var hotelRoom = await _context.HotelRooms
                 .Include(h => h.Hotel)
                 .Include(h => h.Room)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
+                .FirstOrDefaultAsync(m => m.HotelID == id && m.RoomID == id2);
             if (hotelRoom == null)
             {
                 return NotFound();
@@ -49,8 +49,8 @@ namespace AsyncInn.Controllers
         // GET: HotelRooms/Create
         public IActionResult Create()
         {
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "ID");
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID");
+            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name");
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name");
             return View();
         }
 
@@ -73,14 +73,14 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRooms/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? id2)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var hotelRoom = await _context.HotelRooms.FindAsync(id);
+            var hotelRoom = await _context.HotelRooms.FindAsync(id, id2);
             if (hotelRoom == null)
             {
                 return NotFound();
@@ -128,7 +128,7 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRooms/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? id2)
         {
             if (id == null)
             {
@@ -138,7 +138,7 @@ namespace AsyncInn.Controllers
             var hotelRoom = await _context.HotelRooms
                 .Include(h => h.Hotel)
                 .Include(h => h.Room)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
+                .FirstOrDefaultAsync(m => m.HotelID == id && m.RoomID ==id2);
             if (hotelRoom == null)
             {
                 return NotFound();

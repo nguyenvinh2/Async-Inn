@@ -7,7 +7,15 @@
   <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 
-<h2>Index</h2>
+<ul>
+  <li><a>Hotel Rooms</a></li>
+  <li style="float:right"><a href="Amenities">Anemities</a></li>
+  <li style="float:right"><a href="RoomAmenities">Room Anemities</a></li>
+  <li style="float:right"><a href="Rooms">Rooms</a></li>
+  <li style="float:right"><a href="HotelRooms">Hotel Rooms</a></li>
+  <li style="float:right"><a href="Hotels">Hotels</a></li>
+  <li style="float:right"><a href="Home">Main</a></li>
+</ul>
 
 <p>
   <a asp-action="Create">Create New</a>
@@ -15,6 +23,12 @@
 <table class="table">
   <thead>
     <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.Hotel)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.Room)
+      </th>
       <th>
         @Html.DisplayNameFor(model => model.RoomNumber)
       </th>
@@ -24,19 +38,19 @@
       <th>
         @Html.DisplayNameFor(model => model.PetFriendly)
       </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Room)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Hotel)
-      </th>
-      <th></th>
+      <th>Admin</th>
     </tr>
   </thead>
   <tbody>
     @foreach (var item in Model)
     {
       <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Hotel.Name)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Room.Name)
+        </td>
         <td>
           @Html.DisplayFor(modelItem => item.RoomNumber)
         </td>
@@ -47,15 +61,9 @@
           @Html.DisplayFor(modelItem => item.PetFriendly)
         </td>
         <td>
-          @Html.DisplayFor(modelItem => item.Room.ID)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.Hotel.ID)
-        </td>
-        <td>
-          @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-          @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-          @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+          @Html.ActionLink("Edit", "Edit", new { id = item.HotelID, id2 = item.RoomID }) |
+          @Html.ActionLink("Details", "Details", new { id = item.HotelID, id2 = item.RoomID }) |
+          @Html.ActionLink("Delete", "Delete", new { id = item.HotelID, id2 = item.RoomID })
         </td>
       </tr>
     }

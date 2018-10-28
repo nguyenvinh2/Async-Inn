@@ -1,41 +1,54 @@
 ﻿@model IEnumerable<AsyncInn.Models.RoomAmenity>
 
 @{
-    ViewData["Title"] = "Index";
+  ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<head>
+  <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+
+
+<ul>
+  <li><a>Room Amenities</a></li>
+  <li style="float:right"><a href="Amenities">Anemities</a></li>
+  <li style="float:right"><a href="RoomAmenities">Room Anemities</a></li>
+  <li style="float:right"><a href="Rooms">Rooms</a></li>
+  <li style="float:right"><a href="HotelRooms">Hotel Rooms</a></li>
+  <li style="float:right"><a href="Hotels">Hotels</a></li>
+  <li style="float:right"><a href="Home">Main</a></li>
+</ul>
 
 <p>
-    <a asp-action="Create">Create New</a>
+  <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Amenity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Room)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amenity.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.ID)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
+  <thead>
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.Room)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.Amenity)
+      </th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Room.Name)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Amenity.Name)
+        </td>
+        <td>
+          @Html.ActionLink("Details", "Details", new { id = item.AmenityID, id2 = item.RoomID }) |
+          @Html.ActionLink("Delete", "Delete", new { id = item.AmenityID, id2 = item.RoomID })
+        </td>
+      </tr>
+    }
+  </tbody>
 </table>

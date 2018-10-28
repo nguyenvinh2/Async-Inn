@@ -7,8 +7,15 @@
   <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 
-<h2>Index</h2>
-
+<ul>
+  <li><a>Hotels</a></li>
+  <li style="float:right"><a href="Amenities">Anemities</a></li>
+  <li style="float:right"><a href="RoomAmenities">Room Anemities</a></li>
+  <li style="float:right"><a href="Rooms">Rooms</a></li>
+  <li style="float:right"><a href="HotelRooms">Hotel Rooms</a></li>
+  <li style="float:right"><a href="Hotels">Hotels</a></li>
+  <li style="float:right"><a href="Home">Main</a></li>
+</ul>
 <p>
   <a asp-action="Create">Create New</a>
 </p>
@@ -24,7 +31,7 @@
       <th>
         @Html.DisplayNameFor(model => model.Phone)
       </th>
-      <th></th>
+      <th>Admin</th>
     </tr>
   </thead>
   <tbody>
