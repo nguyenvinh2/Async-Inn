@@ -10,26 +10,18 @@
 
 
 
-<h2>Details</h2>
+<h2>Details: Room Amenity</h2>
 
 <div>
-  <h4>RoomAmenity</h4>
-  <hr />
   <dl class="dl-horizontal">
     <dt>
-      @Html.DisplayNameFor(model => model.Room)
+      @Html.DisplayNameFor(model => model.Room): @Html.DisplayFor(model => model.Room.Name)
     </dt>
-    <dd>
-      @Html.DisplayFor(model => model.Room.Name)
-    </dd>
     <dt>
-      @Html.DisplayNameFor(model => model.Amenity)
+      @Html.DisplayNameFor(model => model.Amenity): @Html.DisplayFor(model => model.Amenity.Name)
     </dt>
-    <dd>
-      @Html.DisplayFor(model => model.Amenity.Name)
-    </dd>
   </dl>
 </div>
-<div>
+<div class="bottom-navigation">
   <a asp-action="Index">Back to List</a>
 </div>
