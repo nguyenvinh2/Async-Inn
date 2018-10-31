@@ -7,24 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using AsyncInn.Models;
+using AsyncInn.Models.Interfaces;
 
 namespace AsyncInn.Controllers
 {
   public class RoomAmenitiesController : Controller
   {
-    private readonly AsyncInnDbContext _context;
+    private readonly IRoomAmenities _roomAmenities;
+    private readonly IRooms _room;
+    private readonly IAmenities _amenity;
 
-    public RoomAmenitiesController(AsyncInnDbContext context)
+    public RoomAmenitiesController(IRoomAmenities RoomAmenities, IRooms Room, IAmenities Amenity)
     {
-      _context = context;
+      _roomAmenities = RoomAmenities;
+      _room = Room;
+      _amenity = Amenity;
     }
 
     // GET: RoomAmenities
     public async Task<IActionResult> Index()
     {
-      var asyncInnDbContext = _context.RoomAmenities.Include(r => r.Amenity).Include(r => r.Room);
-      return View(await asyncInnDbContext.ToListAsync());
-    }
+      return View(await _roomAmenities.GetRoomAmenities());
+    }    
 
     // GET: RoomAmenities/Details/5
     public async Task<IActionResult> Details(int? id, int? id2)
@@ -34,10 +38,7 @@ namespace AsyncInn.Controllers
         return NotFound();
       }
 
-      var roomAmenity = await _context.RoomAmenities
-          .Include(r => r.Amenity)
-          .Include(r => r.Room)
-          .FirstOrDefaultAsync(m => m.AmenityID == id && m.RoomID == id2);
+      var roomAmenity = await _roomAmenities.GetRoomAmenity(id, id2);
       if (roomAmenity == null)
       {
         return NotFound();
@@ -47,10 +48,10 @@ namespace AsyncInn.Controllers
     }
 
     // GET: RoomAmenities/Create
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-      ViewData["AmenityID"] = new SelectList(_context.Amenities, "ID", "Name");
-      ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name");
+      ViewData["AmenityID"] = new SelectList(await _amenity.GetAmenities(), "ID", "Name");
+      ViewData["RoomID"] = new SelectList(await _room.GetRooms(), "ID", "Name");
       return View();
     }
 
@@ -63,12 +64,9 @@ namespace AsyncInn.Controllers
     {
       if (ModelState.IsValid)
       {
-        _context.Add(roomAmenity);
-        await _context.SaveChangesAsync();
+        await _roomAmenities.CreateRoomAmenities(roomAmenity);
         return RedirectToAction(nameof(Index));
       }
-      ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenity.RoomID);
-      ViewData["AmenityID"] = new SelectList(_context.Amenities, "ID", "Name", roomAmenity.AmenityID);
       return View(roomAmenity);
     }
 
@@ -80,10 +78,7 @@ namespace AsyncInn.Controllers
         return NotFound();
       }
 
-      var roomAmenity = await _context.RoomAmenities
-          .Include(r => r.Amenity)
-          .Include(r => r.Room)
-          .FirstOrDefaultAsync(m => m.AmenityID == id && m.RoomID == id2);
+      var roomAmenity = await _roomAmenities.GetRoomAmenity(id, id2);
       if (roomAmenity == null)
       {
         return NotFound();
@@ -95,17 +90,15 @@ namespace AsyncInn.Controllers
     // POST: RoomAmenities/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id, int id2)
+    public async Task<IActionResult> DeleteConfirmed(int RoomID, int AmenityID)
     {
-      var roomAmenity = await _context.RoomAmenities.FindAsync(id, id2);
-      _context.RoomAmenities.Remove(roomAmenity);
-      await _context.SaveChangesAsync();
+      await _roomAmenities.DeleteRoomAmenities(RoomID, AmenityID);
       return RedirectToAction(nameof(Index));
     }
 
     private bool RoomAmenityExists(int id, int id2)
     {
-      return _context.RoomAmenities.Any(e => e.AmenityID == id && e.RoomID == id2);
+      return _roomAmenities.GetRoomAmenity(id, id2) != null;
     }
   }
 }
