@@ -6,12 +6,15 @@ This is a basic C# Web Application specifically written to create and manage a d
 
 V0.9 creates front end interfacing allowing users to manipulate the database via browser. 
 
+V0.91 uses Dependency Injection so that the Controllers for Hotels, Rooms, and Amenities no longer directly interact with the database. Also some update CSS stylings.
+
 This application uses DOTNET Framework to generate the webpages.
 
 ## Version
 
 V0.8 - 10/25/2018 Buildout of Database
 V0.9 - 10/27/2018 Added Navigation. Improved Front-End
+V0.91 - 10/29/2019 Dependency Injection for Controllers.
 
 ## Requirements
 
