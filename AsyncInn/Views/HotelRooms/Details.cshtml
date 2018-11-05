@@ -1,15 +1,14 @@
 ﻿@model AsyncInn.Models.HotelRoom
-@{ 
+@{
   var id = Model.HotelID;
   var id2 = Model.RoomID;
 }
 @{
-ViewData["Title"] = "Details";
+  ViewData["Title"] = "Details";
 }
-<head>
-  <link href="~/StyleSheet.css" rel="stylesheet" />
-</head>
-
+@{
+  Layout = "_Layout";
+}
 <h2>Details: Hotel Room</h2>
 
 <div>
@@ -32,7 +31,7 @@ ViewData["Title"] = "Details";
   </dl>
 </div>
 
-  <div class="bottom-navigation">
-      @Html.ActionLink("Edit", "Edit", new {id, id2})
-    <a asp-action="Index">Back to List</a>
-  </div>
+<div class="bottom-navigation">
+  @Html.ActionLink("Edit", "Edit", new { id, id2 })
+  <a asp-action="Index">Back to List</a>
+</div>

@@ -3,9 +3,9 @@
 @{
   ViewData["Title"] = "Index";
 }
-<head>
-  <link href="~/StyleSheet.css" rel="stylesheet" />
-</head>
+@{
+  Layout = "_Layout";
+}
 
 <ul>
   <li><a>Hotels</a></li>
@@ -16,6 +16,15 @@
   <li style="float:right"><a href="Hotels">Hotels</a></li>
   <li style="float:right"><a href="Home">Main</a></li>
 </ul>
+
+<h3>Search For Hotels</h3>
+<form asp-controller="Hotels" asp-action="Index">
+  <p class="create">
+    <input type="text" name="SearchString">
+    <input type="submit" value="Filter" />
+  </p>
+</form>
+
 <p class="create">
   <a class="create" asp-action="Create">Create New</a>
 </p>
