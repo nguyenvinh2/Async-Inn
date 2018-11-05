@@ -3,10 +3,9 @@
 @{
   ViewData["Title"] = "Delete";
 }
-<head>
-  <link href="~/StyleSheet.css" rel="stylesheet" />
-</head>
-
+@{
+  Layout = "_Layout";
+}
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this Hotel?</h3>
@@ -19,7 +18,7 @@
 
   <form class="row" asp-action="Delete">
     <input type="hidden" asp-for="ID" />
-    <input type="submit" value="Delete" class="btn btn-default" /> 
+    <input type="submit" value="Delete" class="btn btn-default" />
     <a asp-action="Index">Back to List</a>
   </form>
 </div>

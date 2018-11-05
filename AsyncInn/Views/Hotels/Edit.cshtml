@@ -3,9 +3,10 @@
 @{
   ViewData["Title"] = "Edit";
 }
-<head>
-  <link href="~/StyleSheet.css" rel="stylesheet" />
-</head>
+
+@{
+  Layout = "_Layout";
+}
 
 <h2>Edit Hotel</h2>
 
@@ -36,7 +37,3 @@
     </form>
   </div>
 </div>
-
-@section Scripts {
-  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
